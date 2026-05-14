@@ -1,120 +1,105 @@
-/* Базовые настройки */
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+/* Обнуление отступов */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-:root {
-  /* масштаб макета 1440×1024, меняем через media-правила ниже */
-  --scale: 1;
-}
-
-html,
-body {
-  margin: 0;
-  width: 100%;
-  height: 100%;
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Запрет скролла */
+    background-color: #000;
 }
 
 body {
-  font-family: 'Fira Sans Condensed', sans-serif;
-  background: #111;
-  color: #f3f3f1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden; /* никаких скроллов */
+    background-image: url('bg.png');
+    background-size: cover;
+    background-position: center;
+    font-family: 'Fira Sans Condensed', sans-serif;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Фиксированный кадр макета 1440×1024, который мы масштабируем */
-
-.hero {
-  position: relative;
-  width: 1440px;
-  height: 1024px;
-  background: url('bg.png') no-repeat left top;
-  background-size: 1440px 1024px;
-  overflow: hidden;
-
-  transform-origin: center center;
-  transform: scale(var(--scale));
+/* Контейнер, который имитирует макет 1440x1024 */
+.scene {
+    width: 1440px;
+    height: 1024px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* Масштабирование: макет сжимается под размер окна браузера */
+    transform: scale(min(calc(100vw / 1440), calc(100vh / 1024)));
+    transform-origin: center;
+    flex-shrink: 0;
 }
 
-/* Контентный блок — ВСЕГДА по центру кадра */
-
-.content {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 682px;
-  transform: translate(-50%, -50%);
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
-/* Внутри блока разметка как в макете */
+.logo-section {
+    margin-bottom: 180px;
+}
 
 .logo {
-  display: block;
-  width: 439px;
-  height: auto;
-  margin: 0 auto 72px; /* отступ вниз до текста под лого, подгоняй при желании */
+    width: 450px;
+    height: auto;
 }
 
-.tagline {
-  margin: 0;
-  font-size: 32px;
-  line-height: 1;
-  font-weight: 300;
-  color: #f2f2f0;
-  text-align: center;
-  white-space: nowrap;
+.slogan {
+    font-weight: 300;
+    font-size: 42px;
+    letter-spacing: 0.05em;
+    margin-bottom: 35px;
+    text-transform: none;
 }
 
 .divider {
-  width: 682px;
-  height: 2px;
-  margin: 32px auto 0;
-  background: rgba(255, 255, 255, 0.92);
+    width: 900px;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 45px;
 }
 
 .contacts {
-  margin-top: 25px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 19px;
-  font-style: normal;
-  font-size: 31px;
-  line-height: 1;
-  font-weight: 300;
-  white-space: nowrap;
-}
-
-.contacts a {
-  color: #f2f2f0;
-  text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-style: normal;
+    font-size: 38px;
+    font-weight: 400;
 }
 
 .bullet {
-  width: 12px;
-  height: 12px;
-  flex: 0 0 12px;
+    width: 12px;
+    height: 12px;
+    margin: 0 35px;
 }
 
-/* Масштабирование макета: минимальный коэффициент по ширине/высоте,
-   чтобы 1440×1024 ВСЕГДА помещался без скролла */
-
-@media (max-aspect-ratio: 1440/1024) {
-  /* экран «уже» макета (портрет телефонов) — упираемся в ширину */
-  :root {
-    --scale: calc(100vw / 1440);
-  }
+.email {
+    color: #FFFFFF;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s;
 }
 
-@media (min-aspect-ratio: 1440/1024) {
-  /* экран «шире» макета (десктоп, landscape) — упираемся в высоту */
-  :root {
-    --scale: calc(100vh / 1024);
-  }
+.email:hover {
+    border-color: #FFFFFF;
+}
+
+/* Для очень маленьких экранов (опционально) */
+@media (max-width: 600px) {
+    .contacts {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .bullet {
+        display: none;
+    }
 }
