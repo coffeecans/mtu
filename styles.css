@@ -1,105 +1,106 @@
-/* Обнуление отступов */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root {
+  --text-color: #ffffff;
 }
 
-html, body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden; /* Запрет скролла */
-    background-color: #000;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  min-height: 100%;
 }
 
 body {
-    background-image: url('bg.png');
-    background-size: cover;
-    background-position: center;
-    font-family: 'Fira Sans Condensed', sans-serif;
-    color: #FFFFFF;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  min-height: 100vh;
+  /* Подключаем фон и фиксируем его */
+  background: #0f1a2f url("bg.png") center center / cover no-repeat fixed;
+  color: var(--text-color);
+  font-family: 'Fira Sans Condensed', sans-serif;
 }
 
-/* Контейнер, который имитирует макет 1440x1024 */
-.scene {
-    width: 1440px;
-    height: 1024px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    /* Масштабирование: макет сжимается под размер окна браузера */
-    transform: scale(min(calc(100vw / 1440), calc(100vh / 1024)));
-    transform-origin: center;
-    flex-shrink: 0;
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(24px, 4vw, 56px);
+  text-align: center;
+  width: 100%;
 }
 
-.content-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.logo-section {
-    margin-bottom: 180px;
-}
-
+/* Настройки для логотипа */
 .logo {
-    width: 450px;
-    height: auto;
+  /* Ширина плавно меняется от 250px на мобильных до 440px на мониторах */
+  width: clamp(250px, 30vw, 440px);
+  height: auto;
+  /* Отступ до слогана, имитирующий визуальную пустоту макета */
+  margin-bottom: clamp(60px, 15vh, 180px);
 }
 
-.slogan {
-    font-weight: 300;
-    font-size: 42px;
-    letter-spacing: 0.05em;
-    margin-bottom: 35px;
-    text-transform: none;
+/* Настройки слогана */
+.subtitle {
+  font-weight: 300;
+  font-size: clamp(22px, 4vw, 42px);
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+  margin-bottom: clamp(20px, 3vh, 35px);
 }
 
+/* Линия-разделитель */
 .divider {
-    width: 900px;
-    height: 1px;
-    background-color: rgba(255, 255, 255, 0.6);
-    margin-bottom: 45px;
+  width: 100%;
+  max-width: 870px; /* Ограничиваем максимальную ширину как в макете */
+  height: 1.5px;
+  background-color: rgba(255, 255, 255, 0.8);
+  margin-bottom: clamp(25px, 4vh, 45px);
 }
 
+/* Блок с контактами */
 .contacts {
-    display: flex;
-    align-items: center;
-    font-style: normal;
-    font-size: 38px;
-    font-weight: 400;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(15px, 2vw, 30px);
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(20px, 3vw, 36px);
+  letter-spacing: 0.02em;
 }
 
+.contacts a {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.contacts a:hover,
+.contacts a:focus-visible {
+  opacity: 0.7; /* Легкое затухание при наведении вместо подчеркивания */
+}
+
+/* Настройки квадратного буллита */
 .bullet {
-    width: 12px;
-    height: 12px;
-    margin: 0 35px;
+  width: clamp(8px, 1vw, 12px);
+  height: auto;
 }
 
-.email {
-    color: #FFFFFF;
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.3s;
-}
+/* Адаптация для телефонов и планшетов */
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll;
+  }
+  
+  .contacts {
+    flex-direction: column;
+    gap: 15px; /* Уменьшаем расстояние между телефоном и почтой */
+  }
 
-.email:hover {
-    border-color: #FFFFFF;
-}
-
-/* Для очень маленьких экранов (опционально) */
-@media (max-width: 600px) {
-    .contacts {
-        flex-direction: column;
-        gap: 20px;
-    }
-    .bullet {
-        display: none;
-    }
+  .bullet {
+    display: none; /* Скрываем квадратный буллит, так как контакты теперь друг под другом */
+  }
 }
