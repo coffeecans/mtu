@@ -45,9 +45,9 @@ body {
 .subtitle {
   font-weight: 300;
   font-size: clamp(22px, 4vw, 42px);
-  line-height: 1.2;
+  line-height: 1.6;
   letter-spacing: 0.05em;
-  margin-bottom: clamp(20px, 3vh, 35px);
+  margin-bottom: clamp(20px, 4vh, 35px);
 }
 
 /* Линия-разделитель */
