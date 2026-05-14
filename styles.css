@@ -13,17 +13,19 @@ body {
 
 body {
   font-family: 'Fira Sans Condensed', sans-serif;
-  background: #000;
+  background: #111;
   color: #f3f3f1;
+  overflow: auto;
 }
 
 .hero {
   position: relative;
-  width: 100%;
-  min-height: 100vh;
+  width: 1440px;
+  height: 1024px;
+  margin: 0 auto;
   background-image: url('bg.png');
-  background-size: cover;
-  background-position: center center;
+  background-size: 1440px 1024px;
+  background-position: left top;
   background-repeat: no-repeat;
   overflow: hidden;
 }
@@ -31,23 +33,23 @@ body {
 .content {
   position: absolute;
   left: 198px;
-  top: 102px;
-  width: 682px;
+  top: 93px;
+  width: 685px;
 }
 
 .logo {
-  width: 331px;
+  display: block;
+  width: 439px;
   height: auto;
-  margin-left: 177px;
+  margin: 0 auto;
 }
 
 .tagline {
-  margin: 332px 0 0 0;
+  margin: 274px 0 0 0;
   font-weight: 300;
   font-size: 32px;
   line-height: 1;
-  letter-spacing: 0;
-  color: #f1f1ef;
+  color: #f2f2f0;
   white-space: nowrap;
 }
 
@@ -65,13 +67,13 @@ body {
   gap: 18px;
   font-style: normal;
   font-weight: 300;
-  font-size: 30px;
+  font-size: 31px;
   line-height: 1;
   white-space: nowrap;
 }
 
 .contacts a {
-  color: #f1f1ef;
+  color: #f2f2f0;
   text-decoration: none;
 }
 
@@ -79,63 +81,4 @@ body {
   width: 12px;
   height: 12px;
   flex: 0 0 12px;
-}
-
-@media (max-width: 1439px) {
-  .content {
-    position: relative;
-    left: auto;
-    top: auto;
-    width: min(682px, calc(100vw - 48px));
-    margin: 72px auto;
-  }
-
-  .logo {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .tagline {
-    margin-top: 140px;
-    font-size: clamp(24px, 2.8vw, 32px);
-    text-align: left;
-    white-space: normal;
-  }
-
-  .divider {
-    width: 100%;
-  }
-
-  .contacts {
-    flex-wrap: wrap;
-    gap: 14px;
-    font-size: clamp(24px, 2.6vw, 30px);
-  }
-}
-
-@media (max-width: 767px) {
-  .content {
-    width: calc(100vw - 32px);
-    margin: 40px 16px;
-  }
-
-  .logo {
-    width: min(331px, 72vw);
-  }
-
-  .tagline {
-    margin-top: 72px;
-    font-size: 24px;
-    line-height: 1.15;
-  }
-
-  .divider {
-    margin-top: 24px;
-  }
-
-  .contacts {
-    gap: 12px;
-    font-size: 24px;
-    line-height: 1.15;
-  }
 }
