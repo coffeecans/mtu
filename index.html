@@ -1,29 +1,47 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>МТУ Проект</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@300;400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Проектное бюро МТУ Проект — Моделирование, Технологии, Управление</title>
+    <meta name="description" content="Проектное бюро МТУ Проект: профессиональное моделирование, современные технологии и эффективное управление проектами.">
+    <meta name="keywords" content="проектное бюро, МТУ проект, моделирование, технологии, управление, проектирование">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph (для соцсетей) -->
+    <meta property="og:title" content="Проектное бюро МТУ Проект">
+    <meta property="og:description" content="Моделирование. Технологии. Управление.">
+    <meta property="og:image" content="logo.svg">
+    <meta property="og:type" content="website">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@300;400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="hero" aria-label="Проектное бюро МТУ Проект">
-    <div class="content">
-      <img class="logo" src="./logo.svg" alt="МТУ Проект" width="331" height="171">
+    <!-- Использование семантического тега <main> помогает SEO -->
+    <main class="scene">
+        <div class="content-wrapper">
+            <header class="logo-section">
+                <img src="logo.svg" alt="Проектное бюро МТУ Проект" class="logo">
+            </header>
 
-      <p class="tagline">Моделирование. Технологии. Управление</p>
-
-      <div class="divider" aria-hidden="true"></div>
-
-      <address class="contacts">
-        <a href="tel:+79269133090">+7 (926) 913-30-90</a>
-        <img class="bullet" src="./bulet.svg" alt="" aria-hidden="true" width="12" height="12">
-        <a href="mailto:nikulshin@mtuproekt.ru">nikulshin@mtuproekt.ru</a>
-      </address>
-    </div>
-  </main>
+            <section class="info-section">
+                <h1 class="slogan">Моделирование. Технологии. Управление</h1>
+                <div class="divider" role="presentation"></div>
+                
+                <address class="contacts">
+                    <span class="phone">+7 (926) 913-30-90</span>
+                    <img src="bulet.svg" alt="" class="bullet">
+                    <a href="mailto:nikulshin@mtuproekt.ru" class="email">nikulshin@mtuproekt.ru</a>
+                </address>
+            </section>
+        </div>
+    </main>
 </body>
 </html>
