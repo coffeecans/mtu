@@ -7,7 +7,7 @@
 }
 
 :root {
-  /* масштаб макета 1440×1024, пересчитывается в media-правилах */
+  /* масштаб макета 1440×1024, меняем через media-правила ниже */
   --scale: 1;
 }
 
@@ -28,13 +28,13 @@ body {
   overflow: hidden; /* никаких скроллов */
 }
 
-/* Макет как фиксированный кадр 1440×1024, далее масштабируем целиком */
+/* Фиксированный кадр макета 1440×1024, который мы масштабируем */
 
 .hero {
   position: relative;
   width: 1440px;
   height: 1024px;
-  background: url('bg.png') no-repeat left top;
+  background: url('bg.bng') no-repeat left top;
   background-size: 1440px 1024px;
   overflow: hidden;
 
@@ -42,35 +42,39 @@ body {
   transform: scale(var(--scale));
 }
 
-/* Внутренняя компоновка по исходному макету */
+/* Контентный блок — ВСЕГДА по центру кадра */
 
 .content {
   position: absolute;
-  left: 198px;
-  top: 92px;
+  left: 50%;
+  top: 50%;
   width: 682px;
+  transform: translate(-50%, -50%);
 }
+
+/* Внутри блока разметка как в макете */
 
 .logo {
   display: block;
   width: 439px;
   height: auto;
-  margin-left: 176px;
+  margin: 0 auto 72px; /* отступ вниз до текста под лого, подгоняй при желании */
 }
 
 .tagline {
-  margin: 258px 0 0 0;
+  margin: 0;
   font-size: 32px;
   line-height: 1;
   font-weight: 300;
   color: #f2f2f0;
+  text-align: center;
   white-space: nowrap;
 }
 
 .divider {
   width: 682px;
   height: 2px;
-  margin-top: 32px;
+  margin: 32px auto 0;
   background: rgba(255, 255, 255, 0.92);
 }
 
@@ -78,6 +82,7 @@ body {
   margin-top: 25px;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 19px;
   font-style: normal;
   font-size: 31px;
@@ -97,20 +102,18 @@ body {
   flex: 0 0 12px;
 }
 
-/* Масштабирование: выбираем минимальный коэффициент по ширине/высоте
-   через aspect-ratio media queries, чтобы макет ВСЕГДА помещался без скролла */
+/* Масштабирование макета: минимальный коэффициент по ширине/высоте,
+   чтобы 1440×1024 ВСЕГДА помещался без скролла */
 
-/* Экран «уже» макета (например, телефоны в портрете) —
-   ограничиваемся по ширине вьюпорта */
 @media (max-aspect-ratio: 1440/1024) {
+  /* экран «уже» макета (портрет телефонов) — упираемся в ширину */
   :root {
     --scale: calc(100vw / 1440);
   }
 }
 
-/* Экран «шире» макета (типичный десктоп, landscape) —
-   ограничиваемся по высоте вьюпорта */
 @media (min-aspect-ratio: 1440/1024) {
+  /* экран «шире» макета (десктоп, landscape) — упираемся в высоту */
   :root {
     --scale: calc(100vh / 1024);
   }
